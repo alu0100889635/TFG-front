@@ -3,18 +3,10 @@
         <b-card no-body>
             <b-tabs card>
                 <b-tab title="TEST" active>
-                    <div class="firstTab">
-                        <div class="cont">
-                            <Container :nmbr="sizeTest"/>
-                        </div>
-                        <div class="info">
-                            <div class="alerta">
-                                <p>Resultado:</p>
-                                <h3>POSIBLE CONTAGIO DE CORONAVIRUS (COVID-19)</h3>
-                                <!-- <b-button variant="success">Contestar llamada</b-button> -->
-                               <!--  Cuando haga click, abrirá nueva ventana con timer de llamada -->
-                               <!-- Luego, tendrá botones de finalizar y poner en pausa -->
-                            </div>
+                    <Container :nmbr="sizeTest"/>
+                    <div class="info">
+                        <div class="alerta">
+                            <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
                         </div>
                     </div>
                 </b-tab>
@@ -53,29 +45,31 @@ export default {
 </script>
 
 <style>
-    .firstTab {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-    }
     .info {
-        width: 40%;
-        height: 300px;
+        height: 180px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
     }
-    .cont {
-        width: 60%;
-        height: 100%;
-    }
+    
 
     .alerta {
-        width: 400px;
-        height: 250px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
+        margin-top: 50px;
+        width: 90%;
+        height: 80px;
+        border-radius: 3px;
+        border: none;
         padding: 20px;
+        background: rgb(76, 236, 227, 0.5);
+        font-size: 20px;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-bottom: 40px;
     }
 </style>

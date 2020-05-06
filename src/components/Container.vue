@@ -9,52 +9,17 @@ export default {
   name: 'Container',
   props: ['nmbr'],
   methods: {
-      setColors(){
+      centerAnswersBorders(){
         const elementos = document.getElementsByClassName("grid-item");
         const array = Object.values(elementos);
-        for(let i=0; i<array.length; i+=4){
+        for(let i=0; i<array.length; i++){
           let el = Object.values(elementos)[i];
-          el.style.background = 'lightgrey';
-          if(i == 0){
-              el.style.borderTopLeftRadius= '10px';
-            }
-          if(this.rowsNumber == 7){
-            if(i == 12){
-              el.style.borderBottomLeftRadius= '10px';
-            }
+          if((i%2 == 0)){
+            el.style.borderBottom = '1px solid rgb(224, 224, 224)';
           }
-        };
-        for(let i=1; i<array.length; i+=4){
-          let el = Object.values(elementos)[i];
-          el.style.background = 'lightgrey';
-          if(i == 1){
-              el.style.borderTopRightRadius= '10px';
-          }
-          if(this.rowsNumber == 7){
-            if(i == 13){
-              el.style.borderBottomRightRadius= '10px';
-            }
-          }
-        };
-        for(let i=2; i<array.length; i+=4){
-          let el = Object.values(elementos)[i];
-          el.style.background = 'whitesmoke';
-          if(this.rowsNumber == 4){
-            if(i == 6){
-              el.style.borderBottomLeftRadius= '10px';
-            }
-          }
-        };
-        for(let i=3; i<array.length; i+=4){
-          let el = Object.values(elementos)[i];
-          el.style.background = 'whitesmoke';
-          if(this.rowsNumber == 4){
-            if(i == 7){
-              el.style.borderBottomRightRadius= '10px';
-            }
-          }
-        };
-        
+          else
+            el.style.justifyContent = 'center';
+        }
       },
       createGrid(rows, cols){
         let container = document.getElementById("ctr");
@@ -90,7 +55,7 @@ export default {
               }
             }
             container.appendChild(cell).className = "grid-item";
-            this.setColors();
+            this.centerAnswersBorders();
         };
       },
 
@@ -152,6 +117,7 @@ export default {
 }
 
 #ctr {
+  margin-top: 30px;
   display: grid;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
@@ -159,9 +125,8 @@ export default {
 
 .grid-item {
   padding: 1em;
-  border: 1px solid #ddd;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 </style>

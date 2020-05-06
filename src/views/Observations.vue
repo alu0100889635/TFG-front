@@ -21,6 +21,6 @@ export default {
 <style>
     .observation {
         margin: 100px auto;
-        width: 1200px;
+        width: 1100px;
     }
 </style>

@@ -2,23 +2,20 @@
     <div class="tabsSubject">
         <b-card no-body>
             <b-tabs card>
-                <b-tab class="test" title="TEST" v-on:click="toTest()">
+                <b-tab title="TEST" v-on:click="toTest()">
                 </b-tab>
                 <b-tab title="SUJETO" active>
-                    <div class="SecondTab">
-                        <div class="cont">
-                            <Container :nmbr="sizeSubject"/>
-                        </div>
-                        <div class="info">
+                        <Container :nmbr="sizeSubject"/>
+                        <div class="info2">
                             <div class="alerta">
-                                <p>Resultado:</p>
-                                <h3>POSIBLE CONTAGIO DE CORONAVIRUS (COVID-19)</h3>
-                                <b-button variant="success">Contestar llamada</b-button>
+                                <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
                                <!--  Cuando haga click, abrirá nueva ventana con timer de llamada -->
                                <!-- Luego, tendrá botones de finalizar y poner en pausa -->
                             </div>
+                            <div>
+                                <b-button class="boton" v-on:click="goTo()">Contestar llamada   <i class="fa fa-phone" style="font-size:24px"></i></b-button>
+                            </div>
                         </div>
-                    </div>
                 </b-tab>
                 <b-tab title="RECURSOS">
                 </b-tab>
@@ -48,35 +45,38 @@ export default {
         },
         toObservaciones() {
             this.$router.push({path:'/observations'});
+        },
+        goTo(){
+            //let routeData = this.$router.resolve({name: '/subject'});
+            window.open(this.$router.resolve({path:'/observations'}), '_blank', "width=400,height=300");
+            //window.open("", "", "width=400,height=300");
         }
     },
 }
 </script>
 
 <style>
-    .SecondTab {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-    }
-    .info {
-        width: 40%;
-        height: 300px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    .info2 {
+        height: 350px;
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    .cont {
-        width: 60%;
-        height: 100%;
+        flex-direction: column;
     }
 
-    .alerta {
-        width: 400px;
-        height: 233px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-        padding: 20px;
+    .boton {
+        background: #4cece3;
+        color: black;
+        border-color: transparent;
+        border-radius: 5px;
+        height: 60px;
+        width: 300px;
+        font-size: 20px;
+        box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
     }
 </style>
