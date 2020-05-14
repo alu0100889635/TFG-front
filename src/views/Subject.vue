@@ -6,13 +6,11 @@
 
 <script>
 // @ is an alias to /src
-import Container from '@/components/Container.vue'
 import TabsSubject from '@/components/TabsSubject.vue'
 
 export default {
   name: 'Subject',
   components: {
-      Container,
       TabsSubject
   }
 }

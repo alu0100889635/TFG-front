@@ -54,16 +54,17 @@ export default {
                 contS2++;
               }
             }
-            container.appendChild(cell).className = "grid-item";
+            container.appendChild(cell).className = "grid-item contenedor";
             this.centerAnswersBorders();
         };
       },
 
       async getAnswers(){
-        const respuestas = this.$store.getters.getAnswers;
-        this.phonecall = { ...respuestas };
-        const sujeto = this.$store.getters.getSubject;
-        this.subject = { ...sujeto };
+        await this.$store.dispatch("getResponses");
+        this.phonecall = {...this.$store.getters.getAnswers};
+        const subjectId = { ...this.phonecall }.subject_id;
+        const suj = await this.$store.dispatch("getSubject", subjectId);
+        this.subject = {...this.$store.getters.getSubject};
       },
   },
 
@@ -83,7 +84,7 @@ export default {
         difficultyBreathing: "",
         riskyGroup: "",
         subject_id: "",
-        observations: ["este es el primer mensaje", "y este es el segundo"],
+        observations: [],
       },
       subject: {
         fullName: "",
@@ -111,22 +112,22 @@ export default {
 }
 </script>
 <style>
-:root {
-  --grid-cols: 1;
-  --grid-rows: 1;
-}
+  :root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
 
-#ctr {
-  margin-top: 30px;
-  display: grid;
-  grid-template-rows: repeat(var(--grid-rows), 1fr);
-  grid-template-columns: repeat(var(--grid-cols), 1fr);
-}
+  #ctr {
+    margin-top: 30px;
+    display: grid;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+  }
 
-.grid-item {
-  padding: 1em;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+  .contenedor {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 </style>

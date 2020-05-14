@@ -2,24 +2,22 @@
     <div class="tabsSubject">
         <b-card no-body>
             <b-tabs card>
-                <b-tab title="TEST" v-on:click="toTest()">
+                <b-tab title="TEST" :title-link-class="'tab-title-class'" v-on:click="toTest()">
                 </b-tab>
-                <b-tab title="SUJETO" active>
+                <b-tab title="SUJETO" :title-link-class="'tab-title-class-active'" active>
                         <Container :nmbr="sizeSubject"/>
                         <div class="info2">
                             <div class="alerta">
                                 <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
-                               <!--  Cuando haga click, abrirá nueva ventana con timer de llamada -->
-                               <!-- Luego, tendrá botones de finalizar y poner en pausa -->
                             </div>
                             <div>
                                 <b-button class="boton" v-on:click="goTo()">Contestar llamada   <i class="fa fa-phone" style="font-size:24px"></i></b-button>
                             </div>
                         </div>
                 </b-tab>
-                <b-tab title="RECURSOS">
+                <b-tab :title-link-class="'tab-title-class'" title="RECURSOS" >
                 </b-tab>
-                <b-tab title="OBSERVACIONES" v-on:click="toObservaciones()">
+                <b-tab :title-link-class="'tab-title-class'" title="OBSERVACIONES" v-on:click="toObservaciones()">
                 </b-tab>
             </b-tabs>
         </b-card>
@@ -56,7 +54,6 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     .info2 {
         height: 350px;
         display: flex;
@@ -78,5 +75,14 @@ export default {
         font-style: normal;
         font-weight: 500;
         line-height: 30px;
+    }
+
+    .tab-title-class {
+        color:grey;
+    }
+
+    .tab-title-class-active {
+        color:grey;
+        font-weight: bold;
     }
 </style>

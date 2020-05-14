@@ -9,6 +9,7 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
   background-color: gray;
 }
@@ -32,4 +33,5 @@ body {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>

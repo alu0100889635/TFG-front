@@ -8,6 +8,7 @@ const URL = "http://178.62.41.123:3000";
 const store = new Vuex.Store({
   state: {
     phonecall: {
+      _id: "",
       recentlyTraveled: "",
       sickContact: "",
       sickCovidContact: "",
@@ -31,6 +32,9 @@ const store = new Vuex.Store({
     },
     setValuesSubject (state, values){
       state.subject = { ...state.subject, ...values};
+    },
+    setNewObs(state, values) {
+      state.phonecall.observations = {...state.phonecall.observations, values};
     }
   },
   actions: {
@@ -47,13 +51,40 @@ const store = new Vuex.Store({
     },
 
     async getSubject({commit}, id){
+      let months = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
       await axios.get(URL + "/subjects/" + id)
       .then(response => {
-        const sujeto = response.data;
-        console.log("sujeto traído", sujeto);
+        let sujeto = response.data;
+        let fecha = Object.values(sujeto)[3].split("T")[0].split("-");
+        fecha[1] = months[fecha[1]-1];
+        sujeto.birthDate = fecha[2] + " de " + fecha[1] + " de " + fecha[0];
         commit("setValuesSubject", sujeto);
       })
       .catch(err => console.log(err));
+    },
+
+    async sendObservation({commit}, data){
+      console.log("data", data.id);
+      let respuesta;
+      await axios.post(URL + "/phonecalls/addObservation/" + data.id, data.ob)
+      .then(response => {
+        respuesta = response.data;
+        console.log("respuesta", respuesta);
+        commit("setNewObs", respuesta.observations);
+      })
+      .catch(err => console.log(err));
+      return {...respuesta}.observations;
+    },
+
+    async getObservations({commit}, id){
+      let respuesta;
+      await axios.get(URL + "/phonecalls/getObservations/" + id)
+      .then(response => {
+        respuesta = response.data;
+        console.log("respuesta", respuesta);
+      })
+      .catch(err => console.log(err));
+      return respuesta;
     }
   },
 
@@ -63,6 +94,12 @@ const store = new Vuex.Store({
     },
     getSubject(state){
       return state.subject;
+    },
+    getObservations(state){
+      return state.phonecall.observations;
+    },
+    getId(state){
+      return state.phonecall._id;
     }
   }
 });

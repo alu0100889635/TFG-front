@@ -2,7 +2,7 @@
     <div class="tabsPhonecall">
         <b-card no-body>
             <b-tabs card>
-                <b-tab title="TEST" active>
+                <b-tab :title-link-class="'tab-title-class-active'" title="TEST" active>
                     <Container :nmbr="sizeTest"/>
                     <div class="info">
                         <div class="alerta">
@@ -10,11 +10,11 @@
                         </div>
                     </div>
                 </b-tab>
-                <b-tab title="SUJETO" v-on:click="toSubject()">
+                <b-tab :title-link-class="'tab-title-class'" title="SUJETO" v-on:click="toSubject()">
                 </b-tab>
-                <b-tab title="RECURSOS">
+                <b-tab :title-link-class="'tab-title-class'" title="RECURSOS">
                 </b-tab>
-                <b-tab title="OBSERVACIONES" v-on:click="toObservations()">
+                <b-tab :title-link-class="'tab-title-class'" title="OBSERVACIONES" v-on:click="toObservations()">
                 </b-tab>
             </b-tabs>
         </b-card>
@@ -72,4 +72,14 @@ export default {
         align-content: center;
         margin-bottom: 40px;
     }
+
+    .tab-title-class {
+        color:grey;
+    }
+
+    .tab-title-class-active {
+        color:black;
+        font-weight: bold;
+    }
+
 </style>
