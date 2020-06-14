@@ -11,7 +11,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body {
-  background-color: gray;
+  background-color: whitesmoke;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

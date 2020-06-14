@@ -31,7 +31,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: whitesmoke;
+  /* background: whitesmoke; */
   padding: 30px;
   font-family: Poppins;
   font-style: normal;

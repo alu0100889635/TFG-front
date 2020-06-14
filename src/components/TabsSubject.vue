@@ -7,12 +7,17 @@
                 <b-tab title="SUJETO" :title-link-class="'tab-title-class-active'" active>
                         <Container :nmbr="sizeSubject"/>
                         <div class="info2">
-                            <div class="alerta">
+                            <div id="alert" class="alerta">
                                 <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
                             </div>
-                            <div>
+                            <div id="llamada">
                                 <b-button class="boton" v-on:click="goTo()">Contestar llamada   <i class="fa fa-phone" style="font-size:24px"></i></b-button>
                             </div>
+
+                            <div id="hola">
+                                <StopWatch/>
+                            </div>
+
                         </div>
                 </b-tab>
                 <b-tab :title-link-class="'tab-title-class'" title="RECURSOS" >
@@ -26,15 +31,17 @@
 
 <script>
 import Container from "./Container"
+import StopWatch from "./StopWatch"
 
 export default {
     name: 'TabsSubject',
     components: {
-        Container
+        Container,
+        StopWatch
     },
     data(){
         return {
-            sizeSubject: 4
+            sizeSubject: 4,
         };
     },
     methods: {
@@ -45,9 +52,13 @@ export default {
             this.$router.push({path:'/observations'});
         },
         goTo(){
-            //let routeData = this.$router.resolve({name: '/subject'});
-            window.open(this.$router.resolve({path:'/observations'}), '_blank', "width=400,height=300");
-            //window.open("", "", "width=400,height=300");
+            let x = document.getElementById("hola");
+            let y = document.getElementById("llamada");
+            let z = document.getElementById("alert");
+
+            y.style.display = "none";
+            x.style.display = "block";
+            z.style.display = "none";
         }
     },
 }
@@ -84,5 +95,9 @@ export default {
     .tab-title-class-active {
         color:grey;
         font-weight: bold;
+    }
+
+    #hola {
+        display: none;
     }
 </style>

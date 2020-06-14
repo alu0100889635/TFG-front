@@ -9,7 +9,9 @@
                 <b-tab :title-link-class="'tab-title-class'" title="RECURSOS">
                 </b-tab>
                 <b-tab :title-link-class="'tab-title-class-active'" title="OBSERVACIONES" active>
-                        <Observation :ck="componentKey" :idn="datos.id"/>
+                        <div class="prueba">
+                            <Observation :ck="componentKey" :idn="datos.id"/>
+                        </div>
                             <b-form-textarea
                         id="textarea"
                         v-model="datos.ob.message"

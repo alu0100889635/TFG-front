@@ -85,6 +85,19 @@ const store = new Vuex.Store({
       })
       .catch(err => console.log(err));
       return respuesta;
+    },
+
+    async deletePhonecall({commit}, idphone, idsub){
+      console.log("en store", idphone);
+      await axios.delete(URL + "/phonecalls/" + idphone)
+      .then(response=> console.log(response))
+      .catch(err=>console.log(err));
+    },
+    async deleteSubject({commit}, idsub){
+      console.log("en store", idsub);
+      await axios.delete(URL + "/subjects/" + idsub)
+      .then(response=> console.log(response))
+      .catch(err=>console.log(err));
     }
   },
 
@@ -100,6 +113,9 @@ const store = new Vuex.Store({
     },
     getId(state){
       return state.phonecall._id;
+    },
+    getIdSub(state){
+      return state.phonecall.subject_id;
     }
   }
 });

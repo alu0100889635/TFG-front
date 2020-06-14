@@ -50,7 +50,7 @@ export default {
                 const horaFinal = hora[1].split("Z");
                 const Hora = horaFinal[0].split(".");
                 prueba3.innerText = Hora[0];
-                Object.values(first)[i].appendChild(prueba3).className = "time";
+                Object.values(first)[i].appendChild(prueba3).className = "timing";
                     
             }
             
@@ -90,46 +90,4 @@ export default {
         --grid-rows: 1;
     }
 
-    #obs {
-        margin-top: -60px;
-        display: grid;
-        grid-template-rows: repeat(var(--grid-rows), 1fr);
-        grid-template-columns: repeat(var(--grid-cols), 1fr);
-    }
-
-
-    .observacion {
-        padding: 1em;
-        width: 95%;
-        height: 52px;
-        display: flex;
-    }
-
-    .operator {
-        width: 5%;
-        display: flex;
-        justify-content: flex-start;
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 30px;
-        margin-left: 20px;
-    }
-
-    .msg {
-        width: 90%;
-        display: flex;
-        justify-content: flex-start;
-        font-style: normal;
-        font-weight: 300;
-        line-height: 30px;
-        font-size: 15px;
-    }
-
-    .time {
-        width: 5%;
-        display: flex;
-        justify-content: flex-end;
-    }
 </style>
