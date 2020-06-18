@@ -49,7 +49,9 @@ export default {
                 const hora = this.observations[i].createdAt.split("T");
                 const horaFinal = hora[1].split("Z");
                 const Hora = horaFinal[0].split(".");
-                prueba3.innerText = Hora[0];
+                console.log(hora);
+                const newtime = hora[0].split("-");
+                prueba3.innerText = newtime[2] + "-" + newtime[1] + "-" + newtime[0] +  " " + Hora[0];
                 Object.values(first)[i].appendChild(prueba3).className = "timing";
                     
             }

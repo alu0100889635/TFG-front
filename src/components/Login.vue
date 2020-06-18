@@ -60,7 +60,7 @@
     <style>
 .login-form {
   width: 400px;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +70,7 @@
 
 .form {
   width: 300px;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
 }

@@ -140,8 +140,8 @@ export default {
         font-size: 18px;
     }
 
-    .time {
-        width: 5%;
+    .timing {
+        width: 25%;
         display: flex;
         justify-content: flex-end;
     }

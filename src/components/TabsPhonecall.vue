@@ -6,7 +6,7 @@
                     <Container :nmbr="sizeTest"/>
                     <div class="info">
                         <div class="alerta">
-                            <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
+                            <p>POSIBLE CONTAGIO DE CORONAVIRUS</p><img class="icono" src="../assets/alert-icon.png" widht="30px" height="30px">
                         </div>
                     </div>
                 </b-tab>
@@ -80,6 +80,10 @@ export default {
     .tab-title-class-active {
         color:black;
         font-weight: bold;
+    }
+    
+    .icono {
+        margin-left: 10px;
     }
 
 </style>

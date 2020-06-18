@@ -9,7 +9,7 @@ export default {
   name: 'Container',
   props: ['nmbr'],
   methods: {
-      centerAnswersBorders(){
+      centerAnswersBorders(rows){
         const elementos = document.getElementsByClassName("grid-item");
         const array = Object.values(elementos);
         for(let i=0; i<array.length; i++){
@@ -17,21 +17,28 @@ export default {
           if((i%2 == 0)){
             el.style.borderBottom = '1px solid rgb(224, 224, 224)';
           }
-          else
-            el.style.justifyContent = 'center';
+          else{
+            if(rows == 7){
+              el.style.justifyContent = 'center';
+            }
+            else{
+              el.style.justifyContent = 'flex-start';
+              el.style.marginLeft = '80px';
+            }
+          }
         }
       },
       createGrid(rows, cols){
         let container = document.getElementById("ctr");
         container.style.setProperty('--grid-rows', rows);
         container.style.setProperty('--grid-cols', cols);
-        let contP1 = 0, contP2 = 0, contS1 = 0, contS2 = 0;
+        let contP1 = 0, contP2 = 1, contS1 = 0, contS2 = 1;
         for (let c = 0; c < (rows * cols); c++) {
             let cell = document.createElement("div");
             if((c%2) == 0){
               if(rows == 7){
                 cell.innerText = Object.values(this.phonecallText)[contP1];
-                contP1++; 
+                contP1++;
               }
               else{
                 cell.innerText = Object.values(this.subjectText)[contS1];
@@ -40,7 +47,8 @@ export default {
             }
             else{
               if(rows == 7){
-                if(Object.values(this.phonecall)[contP2]){
+                console.log(Object.values(this.phonecall)[contP2]);
+                if(Object.values(this.phonecall)[contP2] == true){
                   cell.innerText = "Sí";
                   contP2++;
                 }
@@ -55,7 +63,7 @@ export default {
               }
             }
             container.appendChild(cell).className = "grid-item contenedor";
-            this.centerAnswersBorders();
+            this.centerAnswersBorders(rows);
         };
       },
 
@@ -65,6 +73,14 @@ export default {
         const subjectId = { ...this.phonecall }.subject_id;
         const suj = await this.$store.dispatch("getSubject", subjectId);
         this.subject = {...this.$store.getters.getSubject};
+
+        let add = this.subject.address.split(" ");
+        this.subject.address = "";
+        for(let i= 1; i < add.length; i++){
+          add[i] = add[i].charAt(0).toUpperCase() + add[i].slice(1);
+          console.log(add[i]);
+          this.subject.address = this.subject.address + " " + add[i];
+        }
       },
   },
 

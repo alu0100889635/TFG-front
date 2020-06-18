@@ -20,6 +20,7 @@ const store = new Vuex.Store({
       observations: []
     },
     subject: {
+      _id:"",
       fullName: "",
       dni: "",
       birthDate: "",

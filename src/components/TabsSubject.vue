@@ -8,7 +8,7 @@
                         <Container :nmbr="sizeSubject"/>
                         <div class="info2">
                             <div id="alert" class="alerta">
-                                <p>POSIBLE CONTAGIO DE CORONAVIRUS</p>
+                                <p>POSIBLE CONTAGIO DE CORONAVIRUS</p> <img class="icono" src="../assets/alert-icon.png" widht="30px" height="30px">
                             </div>
                             <div id="llamada">
                                 <b-button class="boton" v-on:click="goTo()">Contestar llamada   <i class="fa fa-phone" style="font-size:24px"></i></b-button>
@@ -42,7 +42,11 @@ export default {
     data(){
         return {
             sizeSubject: 4,
+            disp: false
         };
+    },
+    mounted(){
+        this.display();
     },
     methods: {
         toTest() {
@@ -59,6 +63,21 @@ export default {
             y.style.display = "none";
             x.style.display = "block";
             z.style.display = "none";
+
+            this.disp = true;
+        },
+
+        display(){
+            if(this.disp == true){
+                let y = document.getElementById("hola");
+                y.style.display = "block";
+                let x = document.getElementById("llamada");
+                x.style.display = "none";
+            }
+            else{
+                let y = document.getElementById("llamada");
+                y.style.display = "block";
+            }
         }
     },
 }
@@ -98,6 +117,10 @@ export default {
     }
 
     #hola {
+        display: none;
+    }
+
+    #llamada {
         display: none;
     }
 </style>
